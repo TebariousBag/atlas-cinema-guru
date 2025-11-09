@@ -1,6 +1,7 @@
 import { auth, signOut } from "@/auth";
-import Image from "next/image";
 import Link from "next/link";
+import { FaFilm } from "react-icons/fa";
+import { TbLogout } from "react-icons/tb";
 
 export default async function Header() {
   const session = await auth();
@@ -8,16 +9,20 @@ export default async function Header() {
 
   return (
     <header
-      className="flex items-center justify-between border-b border-white/10 bg-white/5 px-4 py-3"
+      className="fixed top-0 left-0 right-0 z-50 flex h-[52px] items-center justify-between bg-[#1ED2AF] px-4 text-[#00003c]"
       suppressHydrationWarning
     >
       <Link href="/" className="flex items-center gap-2">
-        <Image src="/logo.png" alt="Logo" width={28} height={28} />
-        <span className="text-sm font-medium">Cinema Guru</span>
+        <FaFilm className="h-7 w-7" />
+        <span className="text-base font-semibold text-[#00003c]">
+          Cinema Guru
+        </span>
       </Link>
 
       <div className="flex items-center gap-4 text-sm">
-        {userEmail ? <span className="opacity-90">{userEmail}</span> : null}
+        {userEmail ? (
+          <span className="font-medium">Welcome, {userEmail}</span>
+        ) : null}
         {session ? (
           <form
             action={async () => {
@@ -27,9 +32,10 @@ export default async function Header() {
           >
             <button
               type="submit"
-              className="rounded bg-white/10 px-3 py-1.5 font-medium hover:bg-white/20"
+              className="flex items-center gap-2 px-4 py-1.5 font-medium text-[#00003c] hover:opacity-80"
             >
-              Log out
+              <TbLogout className="h-5 w-5" />
+              <span>Logout</span>
             </button>
           </form>
         ) : null}
