@@ -74,7 +74,7 @@ export default function HomePage() {
   return (
     <div className="p-6">
       {/* Filters Section */}
-      <div className="mb-6 space-y-4 rounded-lg bg-white/5 p-4">
+      <div className="mb-6 space-y-4 rounded-lg p-4">
         {/* Top Row: Search/Years on left, Genres on right */}
         <div className="flex gap-6">
           {/* Left Side: Search and Year Filters - 1/3 width */}
