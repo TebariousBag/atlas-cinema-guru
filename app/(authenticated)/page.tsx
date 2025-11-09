@@ -75,59 +75,69 @@ export default function HomePage() {
     <div className="p-6">
       {/* Filters Section */}
       <div className="mb-6 space-y-4 rounded-lg bg-white/5 p-4">
-        {/* Search */}
-        <div>
-          <label className="mb-2 block text-sm font-medium">Search</label>
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => handleSearchChange(e.target.value)}
-            placeholder="Search by title..."
-            className="w-full rounded border border-white/20 bg-white/10 px-4 py-2 text-white placeholder-white/50 focus:border-[#1ED2AF] focus:outline-none"
-          />
-        </div>
+        {/* Top Row: Search/Years on left, Genres on right */}
+        <div className="flex gap-6">
+          {/* Left Side: Search and Year Filters */}
+          <div className="flex-1 space-y-4">
+            {/* Search */}
+            <div>
+              <label className="mb-2 block text-sm font-medium">Search</label>
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => handleSearchChange(e.target.value)}
+                placeholder="Search by title..."
+                className="w-full rounded border border-white/20 bg-white/10 px-4 py-2 text-white placeholder-white/50 focus:border-[#1ED2AF] focus:outline-none"
+              />
+            </div>
 
-        {/* Year Filters */}
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <label className="mb-2 block text-sm font-medium">Min Year</label>
-            <input
-              type="number"
-              value={minYear}
-              onChange={(e) => handleMinYearChange(e.target.value)}
-              placeholder="e.g. 1990"
-              className="w-full rounded border border-white/20 bg-white/10 px-4 py-2 text-white placeholder-white/50 focus:border-[#1ED2AF] focus:outline-none"
-            />
+            {/* Year Filters */}
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="mb-2 block text-sm font-medium">
+                  Min Year
+                </label>
+                <input
+                  type="number"
+                  value={minYear}
+                  onChange={(e) => handleMinYearChange(e.target.value)}
+                  placeholder="e.g. 1990"
+                  className="w-full rounded border border-white/20 bg-white/10 px-4 py-2 text-white placeholder-white/50 focus:border-[#1ED2AF] focus:outline-none"
+                />
+              </div>
+              <div>
+                <label className="mb-2 block text-sm font-medium">
+                  Max Year
+                </label>
+                <input
+                  type="number"
+                  value={maxYear}
+                  onChange={(e) => handleMaxYearChange(e.target.value)}
+                  placeholder="e.g. 2024"
+                  className="w-full rounded border border-white/20 bg-white/10 px-4 py-2 text-white placeholder-white/50 focus:border-[#1ED2AF] focus:outline-none"
+                />
+              </div>
+            </div>
           </div>
-          <div>
-            <label className="mb-2 block text-sm font-medium">Max Year</label>
-            <input
-              type="number"
-              value={maxYear}
-              onChange={(e) => handleMaxYearChange(e.target.value)}
-              placeholder="e.g. 2024"
-              className="w-full rounded border border-white/20 bg-white/10 px-4 py-2 text-white placeholder-white/50 focus:border-[#1ED2AF] focus:outline-none"
-            />
-          </div>
-        </div>
 
-        {/* Genre Filter */}
-        <div>
-          <label className="mb-2 block text-sm font-medium">Genres</label>
-          <div className="flex flex-wrap gap-2">
-            {genres.map((genre) => (
-              <button
-                key={genre}
-                onClick={() => toggleGenre(genre)}
-                className={`rounded px-3 py-1 text-sm font-medium transition-colors ${
-                  selectedGenres.includes(genre)
-                    ? "bg-[#1ED2AF] text-[#00003c]"
-                    : "bg-white/10 text-white hover:bg-white/20"
-                }`}
-              >
-                {genre}
-              </button>
-            ))}
+          {/* Right Side: Genre Filter */}
+          <div className="flex-1">
+            <label className="mb-2 block text-sm font-medium">Genres</label>
+            <div className="flex flex-wrap gap-2">
+              {genres.map((genre) => (
+                <button
+                  key={genre}
+                  onClick={() => toggleGenre(genre)}
+                  className={`rounded px-3 py-1 text-sm font-medium transition-colors ${
+                    selectedGenres.includes(genre)
+                      ? "bg-[#1ED2AF] text-[#00003c]"
+                      : "bg-white/10 text-white hover:bg-white/20"
+                  }`}
+                >
+                  {genre}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
