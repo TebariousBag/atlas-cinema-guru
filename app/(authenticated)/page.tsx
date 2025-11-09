@@ -86,8 +86,8 @@ export default function HomePage() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => handleSearchChange(e.target.value)}
-                placeholder="Search by title..."
-                className="w-full rounded border border-white/20 bg-white/10 px-4 py-2 text-white placeholder-white/50 focus:border-[#1ED2AF] focus:outline-none"
+                placeholder="Search Movies..."
+                className="w-full rounded-full border-2 border-[#1ED2AF] bg-[#00003c] px-4 py-2 text-white placeholder-white/50 focus:border-[#1ED2AF] focus:outline-none"
               />
             </div>
 
@@ -102,7 +102,7 @@ export default function HomePage() {
                   value={minYear}
                   onChange={(e) => handleMinYearChange(e.target.value)}
                   placeholder="e.g. 1990"
-                  className="w-full rounded border border-white/20 bg-white/10 px-4 py-2 text-white placeholder-white/50 focus:border-[#1ED2AF] focus:outline-none"
+                  className="w-full rounded-full border-2 border-[#1ED2AF] bg-[#00003c] px-4 py-2 text-white placeholder-white/50 focus:border-[#1ED2AF] focus:outline-none"
                 />
               </div>
               <div>
@@ -114,7 +114,7 @@ export default function HomePage() {
                   value={maxYear}
                   onChange={(e) => handleMaxYearChange(e.target.value)}
                   placeholder="e.g. 2024"
-                  className="w-full rounded border border-white/20 bg-white/10 px-4 py-2 text-white placeholder-white/50 focus:border-[#1ED2AF] focus:outline-none"
+                  className="w-full rounded-full border-2 border-[#1ED2AF] bg-[#00003c] px-4 py-2 text-white placeholder-white/50 focus:border-[#1ED2AF] focus:outline-none"
                 />
               </div>
             </div>
@@ -131,10 +131,10 @@ export default function HomePage() {
                 <button
                   key={genre}
                   onClick={() => toggleGenre(genre)}
-                  className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
+                  className={`rounded-full border-2 px-3 py-1 text-xs font-medium transition-colors ${
                     selectedGenres.includes(genre)
-                      ? "bg-[#1ED2AF] text-[#00003c]"
-                      : "bg-white/10 text-white hover:bg-white/20"
+                      ? "border-[#1ED2AF] bg-[#1ED2AF] text-[#00003c]"
+                      : "border-[#1ED2AF] bg-[#00003c] text-white hover:bg-[#1ED2AF] hover:text-[#00003c]"
                   }`}
                 >
                   {genre}
@@ -182,7 +182,7 @@ export default function HomePage() {
             {titles.map((title) => (
               <div
                 key={title.id}
-                className="overflow-hidden rounded-lg bg-white/5 transition-transform hover:scale-105"
+                className="overflow-hidden rounded-lg border-2 border-[#1ED2AF] bg-[#00003c] transition-transform hover:scale-105"
               >
                 <img
                   src={title.image}
@@ -210,7 +210,7 @@ export default function HomePage() {
             <button
               onClick={() => setPage((p) => Math.max(1, p - 1))}
               disabled={page === 1}
-              className="rounded bg-[#1ED2AF] px-4 py-2 font-medium text-[#00003c] disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90"
+              className="rounded-full bg-[#1ED2AF] px-4 py-2 font-medium text-[#00003c] disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90"
             >
               Previous
             </button>
@@ -218,7 +218,7 @@ export default function HomePage() {
             <button
               onClick={() => setPage((p) => p + 1)}
               disabled={titles.length === 0}
-              className="rounded bg-[#1ED2AF] px-4 py-2 font-medium text-[#00003c] disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90"
+              className="rounded-full bg-[#1ED2AF] px-4 py-2 font-medium text-[#00003c] disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90"
             >
               Next
             </button>
