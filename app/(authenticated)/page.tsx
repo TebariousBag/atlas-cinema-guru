@@ -86,8 +86,8 @@ export default function HomePage() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => handleSearchChange(e.target.value)}
-                placeholder="Search by title..."
-                className="w-full rounded border border-white/20 bg-white/10 px-4 py-2 text-white placeholder-white/50 focus:border-[#1ED2AF] focus:outline-none"
+                placeholder="Search Movies..."
+                className="w-full rounded-full text-sm border border-white/20 bg-white/10 px-4 py-2 text-white placeholder-white/50 focus:border-[#1ED2AF] focus:outline-none"
               />
             </div>
 
@@ -102,7 +102,7 @@ export default function HomePage() {
                   value={minYear}
                   onChange={(e) => handleMinYearChange(e.target.value)}
                   placeholder="e.g. 1990"
-                  className="w-full rounded border border-white/20 bg-white/10 px-4 py-2 text-white placeholder-white/50 focus:border-[#1ED2AF] focus:outline-none"
+                  className="w-full rounded-full border border-white/20 bg-white/10 px-4 py-2 text-white placeholder-white/50 focus:border-[#1ED2AF] focus:outline-none"
                 />
               </div>
               <div>
@@ -114,7 +114,7 @@ export default function HomePage() {
                   value={maxYear}
                   onChange={(e) => handleMaxYearChange(e.target.value)}
                   placeholder="e.g. 2024"
-                  className="w-full rounded border border-white/20 bg-white/10 px-4 py-2 text-white placeholder-white/50 focus:border-[#1ED2AF] focus:outline-none"
+                  className="w-full rounded-full border border-white/20 bg-white/10 px-4 py-2 text-white placeholder-white/50 focus:border-[#1ED2AF] focus:outline-none"
                 />
               </div>
             </div>
@@ -123,12 +123,12 @@ export default function HomePage() {
           {/* Right Side: Genre Filter */}
           <div className="flex-1">
             <label className="mb-2 block text-sm font-medium">Genres</label>
-            <div className="flex flex-wrap gap-2">
+            <div className="grid grid-cols-5 gap-2">
               {genres.map((genre) => (
                 <button
                   key={genre}
                   onClick={() => toggleGenre(genre)}
-                  className={`rounded px-3 py-1 text-sm font-medium transition-colors ${
+                  className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
                     selectedGenres.includes(genre)
                       ? "bg-[#1ED2AF] text-[#00003c]"
                       : "bg-white/10 text-white hover:bg-white/20"
