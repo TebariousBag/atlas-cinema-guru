@@ -178,7 +178,7 @@ export default function HomePage() {
       {/* Movies Grid */}
       {!loading && (
         <>
-          <div className="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div className="mb-6 grid grid-cols-3 gap-4">
             {titles.map((title) => (
               <div
                 key={title.id}
