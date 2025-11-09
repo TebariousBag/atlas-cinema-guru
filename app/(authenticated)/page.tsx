@@ -206,22 +206,24 @@ export default function HomePage() {
           )}
 
           {/* Pagination */}
-          <div className="flex items-center justify-center gap-4">
-            <button
-              onClick={() => setPage((p) => Math.max(1, p - 1))}
-              disabled={page === 1}
-              className="rounded-full bg-[#1ED2AF] px-4 py-2 font-medium text-[#00003c] disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90"
-            >
-              Previous
-            </button>
-            <span className="text-sm">Page {page}</span>
-            <button
-              onClick={() => setPage((p) => p + 1)}
-              disabled={titles.length === 0}
-              className="rounded-full bg-[#1ED2AF] px-4 py-2 font-medium text-[#00003c] disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90"
-            >
-              Next
-            </button>
+          <div className="flex items-center justify-center">
+            <div className="inline-flex rounded-full bg-[#1ED2AF] overflow-hidden">
+              <button
+                onClick={() => setPage((p) => Math.max(1, p - 1))}
+                disabled={page === 1}
+                className="px-6 py-2 font-medium text-[#00003c] disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#17a589]"
+              >
+                Previous
+              </button>
+              <div className="w-2 bg-[#00003c]"></div>
+              <button
+                onClick={() => setPage((p) => p + 1)}
+                disabled={titles.length === 0}
+                className="px-6 py-2 font-medium text-[#00003c] disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#17a589]"
+              >
+                Next
+              </button>
+            </div>
           </div>
         </>
       )}
