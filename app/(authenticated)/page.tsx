@@ -183,12 +183,12 @@ export default function HomePage() {
           {/* Right Side: Genre Filter - 1/3 width */}
           <div className="w-1/3">
             <label className="mb-2 block text-sm font-medium">Genres</label>
-            <div className="grid grid-cols-2 gap-2 md:grid-cols-4 xl:grid-cols-5">
+            <div className="flex flex-wrap gap-2">
               {genres.map((genre) => (
                 <button
                   key={genre}
                   onClick={() => toggleGenre(genre)}
-                  className={`rounded-full border-2 px-3 py-1 text-xs font-medium transition-colors ${
+                  className={`rounded-full border-2 px-4 py-1.5 text-xs font-medium transition-colors whitespace-nowrap ${
                     selectedGenres.includes(genre)
                       ? "border-[#1ED2AF] bg-[#1ED2AF] text-[#00003c]"
                       : "border-[#1ED2AF] bg-[#00003c] text-white hover:bg-[#1ED2AF] hover:text-[#00003c]"
@@ -257,7 +257,7 @@ export default function HomePage() {
                     className="rounded-full bg-white/20 p-2 hover:bg-white/30"
                   >
                     {title.favorited ? (
-                      <FaStar className="h-5 w-5 text-white" />
+                      <FaStar className="h-5 w-5 text-yellow-400" />
                     ) : (
                       <FaRegStar className="h-5 w-5 text-white" />
                     )}
@@ -270,7 +270,7 @@ export default function HomePage() {
                     className="rounded-full bg-white/20 p-2 hover:bg-white/30"
                   >
                     {title.watchLater ? (
-                      <FaClock className="h-5 w-5 text-[#ffffff]" />
+                      <FaClock className="h-5 w-5 text-[#1ED2AF]" />
                     ) : (
                       <FaRegClock className="h-5 w-5 text-white" />
                     )}
