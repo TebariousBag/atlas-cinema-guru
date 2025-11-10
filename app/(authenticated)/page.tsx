@@ -257,7 +257,7 @@ export default function HomePage() {
                     className="rounded-full bg-white/20 p-2 hover:bg-white/30"
                   >
                     {title.favorited ? (
-                      <FaStar className="h-5 w-5 text-yellow-400" />
+                      <FaStar className="h-5 w-5 text-white" />
                     ) : (
                       <FaRegStar className="h-5 w-5 text-white" />
                     )}
@@ -270,7 +270,7 @@ export default function HomePage() {
                     className="rounded-full bg-white/20 p-2 hover:bg-white/30"
                   >
                     {title.watchLater ? (
-                      <FaClock className="h-5 w-5 text-[#1ED2AF]" />
+                      <FaClock className="h-5 w-5 text-[#ffffff]" />
                     ) : (
                       <FaRegClock className="h-5 w-5 text-white" />
                     )}
