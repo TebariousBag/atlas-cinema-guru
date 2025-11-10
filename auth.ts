@@ -17,9 +17,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }),
   ],
   callbacks: {
-    authorized: async ({ auth }) => {
-      // Logged in users are authenticated, otherwise redirect to login page
-      return !!auth;
+    authorized: async ({ auth, request }) => {
+      const isLoggedIn = !!auth;
+      const isOnLoginPage = request.nextUrl.pathname === "/login";
+
+      // Allow access to login page if not logged in
+      if (isOnLoginPage) {
+        return true;
+      }
+
+      // Require authentication for all other pages
+      return isLoggedIn;
     },
   },
 });
