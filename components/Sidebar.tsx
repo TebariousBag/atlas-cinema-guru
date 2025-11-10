@@ -125,7 +125,7 @@ export default function Sidebar() {
                   </p>
                   <p className="mt-1">
                     {formatActivity(activity).split(activity.title)[0]}
-                    <span className="font-semibold text-[#00FFD1]">
+                    <span className="font-bold text-[#00003c]">
                       {activity.title}
                     </span>
                     {formatActivity(activity).split(activity.title)[1]}

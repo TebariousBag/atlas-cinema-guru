@@ -62,7 +62,7 @@ export default function FavoritesPage() {
 
   return (
     <div className="p-6">
-      <h1 className="mb-6 text-3xl font-bold">Favorites</h1>
+      <h1 className="mb-6 text-3xl font-bold text-center">Favorites</h1>
 
       {/* Loading State */}
       {loading && (
@@ -94,7 +94,7 @@ export default function FavoritesPage() {
                     className="rounded-full bg-white/20 p-2 hover:bg-white/30"
                   >
                     {title.favorited ? (
-                      <FaStar className="h-5 w-5 text-yellow-400" />
+                      <FaStar className="h-5 w-5 text-white" />
                     ) : (
                       <FaRegStar className="h-5 w-5 text-white" />
                     )}
@@ -107,7 +107,7 @@ export default function FavoritesPage() {
                     className="rounded-full bg-white/20 p-2 hover:bg-white/30"
                   >
                     {title.watchLater ? (
-                      <FaClock className="h-5 w-5 text-[#1ED2AF]" />
+                      <FaClock className="h-5 w-5 text-[#ffffff]" />
                     ) : (
                       <FaRegClock className="h-5 w-5 text-white" />
                     )}
