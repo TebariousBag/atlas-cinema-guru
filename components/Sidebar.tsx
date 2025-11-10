@@ -110,24 +110,26 @@ export default function Sidebar() {
 
       {isExpanded && (
         <div className="mt-4 border-t border-white/20 p-3">
-          <h3 className="mb-3 text-sm font-semibold">Latest Activities</h3>
+          <h3 className="mb-3 text-sm font-semibold text-[#00003c]">
+            Latest Activities
+          </h3>
           <div
             className="flex flex-col gap-2 overflow-y-auto"
             style={{ maxHeight: "calc(100vh - 280px)" }}
           >
             {activities.length === 0 ? (
-              <p className="text-xs opacity-70">No activities yet</p>
+              <p className="text-xs text-[#00003c] opacity-70">
+                No activities yet
+              </p>
             ) : (
               activities.map((activity) => (
-                <div key={activity.id} className="text-xs">
+                <div key={activity.id} className="text-xs text-[#00003c]">
                   <p className="opacity-70">
                     {formatTimestamp(activity.timestamp)}
                   </p>
                   <p className="mt-1">
                     {formatActivity(activity).split(activity.title)[0]}
-                    <span className="font-bold text-[#00003c]">
-                      {activity.title}
-                    </span>
+                    <span className="font-bold">{activity.title}</span>
                     {formatActivity(activity).split(activity.title)[1]}
                   </p>
                 </div>
