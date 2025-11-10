@@ -79,10 +79,8 @@ export default function HomePage() {
         await fetch(`/api/favorites/${titleId}`, { method: "DELETE" });
       } else {
         // Add to favorites
-        await fetch("/api/favorites", {
+        await fetch(`/api/favorites/${titleId}`, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ titleId }),
         });
       }
       // Refresh the titles to update the state
