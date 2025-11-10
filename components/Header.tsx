@@ -1,6 +1,6 @@
 import { auth, signOut } from "@/auth";
 import Link from "next/link";
-import { FaFilm } from "react-icons/fa";
+import { IoFilmOutline } from "react-icons/io5";
 import { TbLogout } from "react-icons/tb";
 
 export default async function Header() {
@@ -13,7 +13,7 @@ export default async function Header() {
       suppressHydrationWarning
     >
       <Link href="/" className="flex items-center gap-2">
-        <FaFilm className="h-7 w-7" />
+        <IoFilmOutline className="h-7 w-7" />
         <span className="text-base font-semibold text-[#00003c]">
           Cinema Guru
         </span>
