@@ -63,7 +63,7 @@ export default function Sidebar() {
 
   if (!isMounted) {
     return (
-      <aside className="fixed left-0 top-[52px] h-[calc(100vh-52px)] w-16 bg-[#1ED2AF] text-white">
+      <aside className="fixed left-0 top-[52px] z-40 h-[calc(100vh-52px)] w-16 bg-[#1ED2AF] text-white">
         <nav className="flex flex-col gap-2 p-3">
           {navLinks.map((link) => (
             <Link
@@ -81,7 +81,7 @@ export default function Sidebar() {
 
   return (
     <aside
-      className={`fixed left-0 top-[52px] h-[calc(100vh-52px)] bg-[#1ED2AF] text-white transition-all duration-300 ${
+      className={`fixed left-0 top-[52px] z-40 h-[calc(100vh-52px)] bg-[#1ED2AF] text-white transition-all duration-300 ${
         isExpanded ? "w-64" : "w-16"
       }`}
       onMouseEnter={() => setIsExpanded(true)}

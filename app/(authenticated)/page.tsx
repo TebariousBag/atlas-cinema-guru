@@ -109,10 +109,8 @@ export default function HomePage() {
         await fetch(`/api/watch-later/${titleId}`, { method: "DELETE" });
       } else {
         // Add to watch later
-        await fetch("/api/watch-later", {
+        await fetch(`/api/watch-later/${titleId}`, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ titleId }),
         });
       }
       // Refresh the titles to update the state
