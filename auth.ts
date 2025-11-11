@@ -11,32 +11,40 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   pages: {
     signIn: "/login",
   },
+  session: {
+    strategy: "jwt",
+    maxAge: 30 * 24 * 60 * 60, // 30 days
+  },
+  cookies: {
+    sessionToken: {
+      name: `__Secure-next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        secure: true,
+      },
+    },
+  },
   providers: [
     GitHub({
       clientId: process.env.AUTH_GITHUB_ID,
       clientSecret: process.env.AUTH_GITHUB_SECRET,
     }),
   ],
+  debug: true,
   callbacks: {
     authorized: async ({ auth, request }) => {
       const isLoggedIn = !!auth;
-      const isOnLoginPage = request.nextUrl.pathname === "/login";
-      
-      // Allow access to login page
-      if (isOnLoginPage) {
-        // If already logged in, redirect to home
-        if (isLoggedIn) {
-          return Response.redirect(new URL("/", request.url));
-        }
+      const { pathname } = request.nextUrl;
+
+      // Allow login page access
+      if (pathname === "/login") {
         return true;
       }
-      
-      // Require authentication for all other pages
-      if (!isLoggedIn) {
-        return false; // This will redirect to signIn page
-      }
-      
-      return true;
+
+      // All other pages require authentication
+      return isLoggedIn;
     },
   },
 });
