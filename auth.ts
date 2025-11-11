@@ -15,17 +15,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60, // 30 days
   },
-  cookies: {
-    sessionToken: {
-      name: `__Secure-next-auth.session-token`,
-      options: {
-        httpOnly: true,
-        sameSite: "lax",
-        path: "/",
-        secure: true,
-      },
-    },
-  },
   providers: [
     GitHub({
       clientId: process.env.AUTH_GITHUB_ID,
@@ -34,6 +23,20 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   ],
   debug: true,
   callbacks: {
+    async jwt({ token, account, profile }) {
+      // Persist user info to the token right after signin
+      if (account && profile) {
+        token.id = profile.id;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      // Add user id to session
+      if (token && session.user) {
+        session.user.id = token.id as string;
+      }
+      return session;
+    },
     authorized: async ({ auth, request }) => {
       const isLoggedIn = !!auth;
       const { pathname } = request.nextUrl;
