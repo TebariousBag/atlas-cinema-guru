@@ -5,8 +5,11 @@ export default auth((req) => {
   const { pathname } = req.nextUrl;
   const isLoggedIn = !!req.auth;
 
-  // Allow login page
-  if (pathname === "/login") {
+  // Public routes that don't require authentication
+  const isPublicRoute = pathname === "/login";
+
+  // Allow public routes
+  if (isPublicRoute) {
     return NextResponse.next();
   }
 

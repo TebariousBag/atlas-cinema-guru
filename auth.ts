@@ -3,6 +3,7 @@ import GitHub from "next-auth/providers/github";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   trustHost: true,
+  basePath: "/api/auth",
   theme: {
     brandColor: "#1ED2AF",
     logo: "/logo.png",
@@ -21,7 +22,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       clientSecret: process.env.AUTH_GITHUB_SECRET,
     }),
   ],
-  debug: true,
+  debug: false,
   callbacks: {
     async jwt({ token, account, profile }) {
       // Persist user info to the token right after signin
@@ -36,6 +37,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         session.user.id = token.id as string;
       }
       return session;
+    },
+    async redirect({ url, baseUrl }) {
+      // After sign in, redirect to home page
+      if (url.startsWith(baseUrl)) {
+        return url;
+      }
+      // Allows relative callback URLs
+      if (url.startsWith("/")) {
+        return `${baseUrl}${url}`;
+      }
+      return baseUrl;
     },
   },
 });
