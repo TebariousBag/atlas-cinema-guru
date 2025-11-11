@@ -37,17 +37,5 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       }
       return session;
     },
-    authorized: async ({ auth, request }) => {
-      const isLoggedIn = !!auth;
-      const { pathname } = request.nextUrl;
-
-      // Allow login page access
-      if (pathname === "/login") {
-        return true;
-      }
-
-      // All other pages require authentication
-      return isLoggedIn;
-    },
   },
 });
