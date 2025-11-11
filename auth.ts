@@ -21,14 +21,22 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     authorized: async ({ auth, request }) => {
       const isLoggedIn = !!auth;
       const isOnLoginPage = request.nextUrl.pathname === "/login";
-
-      // Allow access to login page if not logged in
+      
+      // Allow access to login page
       if (isOnLoginPage) {
+        // If already logged in, redirect to home
+        if (isLoggedIn) {
+          return Response.redirect(new URL("/", request.url));
+        }
         return true;
       }
-
+      
       // Require authentication for all other pages
-      return isLoggedIn;
+      if (!isLoggedIn) {
+        return false; // This will redirect to signIn page
+      }
+      
+      return true;
     },
   },
 });
